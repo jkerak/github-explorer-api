@@ -1,0 +1,60 @@
+github explorer API - Initial concept notes (including UI template notes)
+
+events: ignore, collect
+
+Web Page views:
+exploration:
+search form:
+  query:
+    size:
+    stars:
+    ignoreRepos:
+    language:
+    perPage:
+    page:
+
+results grid (search results):
+  repositories:
+    fullName:
+    description:
+    url:
+    stars:
+
+collection (some component):
+  title:
+  repositories:
+    fullname:
+    description:
+    url:
+    stars:
+    notes:
+  created:
+  lastUpdated:
+
+DB Tables:
+Repository:
+  RepositoryID BIGINT IDENTITY,
+  FullName NVARCHAR(100),
+  Description NVARCHAR(200),
+  Url NVARCHAR(119),
+  Stars INT
+
+UserCollection:
+  UserCollectionID BIGINT IDENTITY,
+  UserID BIGINT, # FK to User
+  Title NVARCHAR(25)
+  
+UserCollectionRepository:
+  UserCollectionRepositoryID BIGINT IDENTITY,
+  UserCollectionID BIGINT, # FK to UserCollection
+  RepositoryID BIGINT, # FK to Repository
+  Notes NVARCHAR(250)
+
+User:
+  userId BIGINT IDENTITY,
+  userName NVARCHAR(39)
+
+
+https://gist.github.com/tonybruess/9405134    
+
+      
