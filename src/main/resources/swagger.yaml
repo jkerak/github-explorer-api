@@ -54,16 +54,21 @@ paths:
           schema:
             $ref: '#/definitions/repositoryDto'
 
-
-
-  # /repositories/{id}/ignore:
-  #   post:
-  #     summary:
-  #     operationId:
-  #     parameters:
-  #       -
-  #     responses:
-
+  /userCollections/{id}/ignore:
+    post:
+      description: |
+        Add repository to collection
+      operationId: ignoreRepository
+      parameters:
+        - name: id
+          in: path
+          description: userRepositoryCollectionId to add repository
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: OK
 
   /userCollections/{id}/collect:
     post:
