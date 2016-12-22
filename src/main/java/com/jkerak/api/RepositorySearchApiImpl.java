@@ -21,6 +21,8 @@ public class RepositorySearchApiImpl implements RepositorySearchApi {
         resultDto.setStars(4);
         resultDto.setUrl("www.google.com");
 
+        resultDtos.add(resultDto);
+
         return Response.ok().entity(resultDtos).build();
     }
 }

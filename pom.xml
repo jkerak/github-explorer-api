@@ -77,14 +77,13 @@
 		</dependency>
 	</dependencies>
 
-
-
-
-
-
-
-
 	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<targetPath>public</targetPath>
+			</resource>
+		</resources>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -120,7 +119,6 @@
 							<modelPackage>com.jkerak.dto</modelPackage>
 							<language>jaxrsinterfaces</language>
 							<yamlToJson>true</yamlToJson>
-							<yamlToJsonOutputDirectory>${project.build.directory}/classes/static/static</yamlToJsonOutputDirectory>
 						</configuration>
 					</execution>
 				</executions>
