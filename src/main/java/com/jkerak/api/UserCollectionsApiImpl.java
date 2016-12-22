@@ -8,12 +8,12 @@ public class UserCollectionsApiImpl implements UserCollectionsApi {
 
 
     @Override
-    public Response addRepositoryToUserCollection(@ApiParam(value = "userRepositoryCollectionId to add repository", required = true) Long id) throws NotFoundException {
+    public Response addRepositoryToUserCollection(@ApiParam(value = "userRepositoryCollectionId to add dao", required = true) Long id) throws NotFoundException {
         return null;
     }
 
     @Override
-    public Response ignoreRepository(@ApiParam(value = "userRepositoryCollectionId to add repository", required = true) Long id) throws NotFoundException {
+    public Response ignoreRepository(@ApiParam(value = "userRepositoryCollectionId to add dao", required = true) Long id) throws NotFoundException {
         return null;
     }
 

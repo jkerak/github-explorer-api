@@ -62,7 +62,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: userRepositoryCollectionId to add repository
+          description: userRepositoryCollectionId to add dao
           required: true
           type: integer
           format: int64
@@ -78,7 +78,7 @@ paths:
       parameters:
         - name: id
           in: path
-          description: userRepositoryCollectionId to add repository
+          description: userRepositoryCollectionId to add dao
           required: true
           type: integer
           format: int64

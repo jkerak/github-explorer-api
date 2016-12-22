@@ -13,7 +13,7 @@ public class RepositoriesApiImpl implements RepositoriesApi {
 
     private static final Logger logger = Logger.getLogger(RepositoriesApiImpl.class);
 
-    public Response repositoriesIdGet(@ApiParam(value = "repositoryId to return", required = true) Long id) throws NotFoundException {
+    public Response repositoriesIdGet(Long id) throws NotFoundException {
         RepositoryDto repositoryDto = new RepositoryDto();
 
         repositoryDto.setId(1L);
