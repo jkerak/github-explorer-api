@@ -1,0 +1,150 @@
+swagger: '2.0'
+produces:
+  - application/json
+consumes:
+  - application/json
+
+paths:
+  /repositorySearch:
+    post:
+      description: |
+        Search for potential new repositories to collect
+      operationId: searchRepositories
+      parameters:
+        - name: query
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/repositorySearchQueryDto'
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/repositorySearchResultDto'
+  /repositories/{id}:
+    get:
+      description: |
+        get repository listing by id
+      parameters:
+        - name: id
+          in: path
+          description: repositoryId to return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/repositoryDto'
+  /userCollections/{id}:
+    get:
+      description: |
+        gets user collection of repositories by id
+      parameters:
+        - name: id
+          in: path
+          description: id of collection to return
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/repositoryDto'
+
+
+
+  # /repositories/{id}/ignore:
+  #   post:
+  #     summary:
+  #     operationId:
+  #     parameters:
+  #       -
+  #     responses:
+
+
+  /userCollections/{id}/collect:
+    post:
+      description: |
+        Add repository to collection
+      operationId: addRepositoryToUserCollection
+      parameters:
+        - name: id
+          in: path
+          description: userRepositoryCollectionId to add repository
+          required: true
+          type: integer
+          format: int64
+      responses:
+        200:
+          description: OK
+
+
+definitions:
+
+  repositorySearchResultDto:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      fullName:
+        type: string
+      description:
+        type: string
+      url:
+        type: string
+      stars:
+        type: integer
+        format: int32
+
+  repositorySearchQueryDto:
+    type: object
+    properties:
+      size:
+        type: string
+      stars:
+        type: string
+      language:
+        type: string
+
+  userCollectionDto:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      title:
+        type: string
+      created:
+        type: string
+      modified:
+        type: string
+      repositories:
+        type: array
+        items:
+          $ref: '#/definitions/repositoryDto'
+
+  repositoryDto:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      fullName:
+        type: string
+      description:
+        type: string
+      url:
+        type: string
+      stars:
+        type: integer
+        format: int32
+      notes:
+        type: string
+      saved:
+        type: string
+      updated:
+        type: string
