@@ -26,7 +26,7 @@ public class RepositorySearchApiImpl implements RepositorySearchApi {
 
     public Response searchRepositories(RepositorySearchQueryDto queryDto) throws NotFoundException {
 
-        RepositorySearchQuery query = new RepositorySearchQuery();
+        RepositorySearchQuery query = modelMapper.map(queryDto, RepositorySearchQuery.class);
 
         RepositorySearchResults searchResults = null;
         try {

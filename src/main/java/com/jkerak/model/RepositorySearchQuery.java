@@ -1,12 +1,12 @@
 package com.jkerak.model;
 
 public class RepositorySearchQuery {
-    
-    private Long githubUserId;
-    private Long collectionId;
-    private String size;
-    private String stars;
-    private String language;
+
+    private Long githubUserId = null;
+    private Long collectionId = null;
+    private String size = null;
+    private String stars = null;
+    private String language = null;
 
     public Long getGithubUserId() {
         return githubUserId;

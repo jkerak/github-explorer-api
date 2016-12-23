@@ -15,6 +15,8 @@ public class RepositorySearchResults {
 
     @JsonProperty("incomplete_results")
     private Boolean incompleteResults = null;
+
+    @JsonProperty("items")
     private List<RepositorySearchResultItem> items = new ArrayList<>();
 
     public Integer getTotalCount() {

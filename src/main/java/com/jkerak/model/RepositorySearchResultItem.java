@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class RepositorySearchResultItem {
 
+    @JsonProperty("id")
     private Long id = null;
 
     @JsonProperty("full_name")
@@ -18,7 +19,12 @@ public class RepositorySearchResultItem {
     @JsonProperty("stargazers_count")
     private String stars = null;
 
+    @JsonProperty("description")
     private String description = null;
+
+    @JsonProperty("language")
+    private String language = null;
+
 
     public Long getId() {
         return id;
@@ -58,5 +64,13 @@ public class RepositorySearchResultItem {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }

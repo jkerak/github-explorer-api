@@ -117,6 +117,8 @@ definitions:
       stars:
         type: integer
         format: int32
+      language:
+        type: string
 
   repositorySearchQueryDto:
     type: object
