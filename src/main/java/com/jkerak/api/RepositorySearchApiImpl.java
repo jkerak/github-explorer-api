@@ -1,15 +1,16 @@
 package com.jkerak.api;
 
 import com.jkerak.dto.RepositorySearchQueryDto;
-import com.jkerak.dto.RepositorySearchResultDto;
+import com.jkerak.dto.RepositorySearchResultsDto;
 import com.jkerak.model.RepositorySearchQuery;
-import com.jkerak.model.RepositorySearchResult;
+import com.jkerak.model.RepositorySearchResults;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.jkerak.service.GithubRepositoryService;
+import com.jkerak.service.RepositoryService;
 import javax.ws.rs.core.Response;
+import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -18,7 +19,7 @@ public class RepositorySearchApiImpl implements RepositorySearchApi {
 
 
     @Autowired
-    private GithubRepositoryService repositoryService;
+    private RepositoryService repositoryService;
 
     @Autowired
     private ModelMapper modelMapper;
@@ -27,11 +28,18 @@ public class RepositorySearchApiImpl implements RepositorySearchApi {
 
         RepositorySearchQuery query = new RepositorySearchQuery();
 
-        List<RepositorySearchResult> searchResults = repositoryService.searchRepositories(query);
+        RepositorySearchResults searchResults = null;
+        try {
+            searchResults = repositoryService.searchRepositories(query);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        Type destinationListType = new TypeToken<List<RepositorySearchResultDto>>() {}.getType();
-        List<RepositorySearchResultDto> resultDtos = modelMapper.map(searchResults, destinationListType);
+        if (searchResults != null) {
+            RepositorySearchResultsDto resultDto = modelMapper.map(searchResults, RepositorySearchResultsDto.class);
+            return Response.ok().entity(resultDto).build();
+        }
 
-        return Response.ok().entity(resultDtos).build();
+        return null;
     }
 }

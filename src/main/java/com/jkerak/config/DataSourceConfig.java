@@ -11,16 +11,12 @@ import javax.sql.DataSource;
 
 @Configuration
 @Profile({"mysql-cloud"})
-public class DatabaseConfig extends AbstractCloudConfig {
+public class DataSourceConfig extends AbstractCloudConfig {
 
     @Bean
+    @Primary
     public DataSource dataSource() {
         return connectionFactory().dataSource();
     }
 
-    @Bean
-    @Primary
-    public Sql2o getSql2o(){
-        return new Sql2o(dataSource());
-    }
 }

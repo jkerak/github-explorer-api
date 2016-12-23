@@ -23,6 +23,7 @@ public class RepositoriesApiImpl implements RepositoriesApi {
         repositoryDto.setDescription("description");
         repositoryDto.setNotes("Notes");
         logger.debug("something happened");
+
         return Response.ok().entity(repositoryDto).build();
 
     }

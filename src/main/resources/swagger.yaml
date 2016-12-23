@@ -20,7 +20,7 @@ paths:
         200:
           description: OK
           schema:
-            $ref: '#/definitions/repositorySearchResultDto'
+            $ref: '#/definitions/repositorySearchResultsDto'
   /repositories/{id}:
     get:
       description: |
@@ -88,8 +88,21 @@ paths:
 
 
 definitions:
+  repositorySearchResultsDto:
+    type: object
+    properties:
+      totalCount:
+        type: integer
+        format: int32
+      incompleteResults:
+        type: boolean
+      items:
+        type: array
+        items:
+          $ref: '#/definitions/repositorySearchResultItemDto'
 
-  repositorySearchResultDto:
+
+  repositorySearchResultItemDto:
     type: object
     properties:
       id:
