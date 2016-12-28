@@ -31,7 +31,12 @@ public class GithubExplorerApiApplication {
     @Bean
     @Profile({"default"})
     public Sql2o getSql2o(){
-        return new Sql2o("jdbc:mysql://us-cdbr-iron-east-04.cleardb.net/ad_0a8cfd6f0d1fae4","bbe91f0ef229b0", "916876ee");
+        return new Sql2o("jdbc:mysql://127.0.0.1:3306/dbo","root", "password");
+    }
+
+    @Bean
+    public ModelMapper modelMapper(){
+        return new ModelMapper();
     }
 
 }

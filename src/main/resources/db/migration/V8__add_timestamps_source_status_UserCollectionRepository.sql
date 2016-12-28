@@ -1,6 +1,0 @@
-ALTER TABLE UserCollectionRepository
-ADD CreateDateTime TIMESTAMP NOT NULL,
-ADD CreateSource VARCHAR(3) NOT NULL,
-ADD LastUpdateDateTime TIMESTAMP NOT NULL,
-ADD LastUpdateSource VARCHAR(3) NOT NULL,
-ADD Status CHAR(1) NOT NULL

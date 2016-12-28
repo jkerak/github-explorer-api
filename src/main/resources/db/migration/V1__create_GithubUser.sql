@@ -1,5 +1,7 @@
 CREATE TABLE GithubUser
 ( GithubUserID BIGINT NOT NULL AUTO_INCREMENT,
   UserName VARCHAR(39) NOT NULL,
+  `timestamp` TIMESTAMP,
+  Status CHAR(1) NOT NULL,
   PRIMARY KEY (GithubUserID)
 )

@@ -1,5 +1,6 @@
 package com.jkerak.dao;
 
+import com.jkerak.dbrecord.UserCollectionRepositoryRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.sql2o.Connection;
@@ -13,19 +14,33 @@ public class UserCollectionRepositoryDao {
     @Autowired
     private Sql2o sql2o;
 
-    public List<String> getSavedOrIgnoredRepositories(Long collectionId) {
+    public List<UserCollectionRepositoryRecord> getSavedOrIgnoredRepositories(Long collectionId) {
         try (Connection con = sql2o.open()){
             return con.createQuery(getSavedOrIgnoredRepositoriesSql)
                     .addParameter("collectionId", collectionId)
-                    .executeAndFetch(String.class);
+                    .executeAndFetch(UserCollectionRepositoryRecord.class);
         }
     }
 
     static final String getSavedOrIgnoredRepositoriesSql =
-            "SELECT  r.FullName\n" +
-                    "FROM    UserCollectionRepository ucr\n" +
-                    "        INNER JOIN Repository r\n" +
-                    "          ON ucr.RepositoryID = r.RepositoryID\n" +
-                    "WHERE   ucr.UserCollectionID = :collectionId\n" +
-                    "    AND ucr.Status IN ('S','I')";
+            "SELECT  RepositoryID,\n" +
+                    "        RepositoryName,\n" +
+                    "        Notes,\n" +
+                    "        `timestamp`,\n" +
+                    "        Status\n" +
+                    "FROM    UserCollectionRepository \n" +
+                    "WHERE   UserCollectionID = :collectionId\n" +
+                    "    AND Status IN ('S','I')";
+
+    public void insert(UserCollectionRepositoryRecord repositoryRecord) {
+        try (Connection con = sql2o.open()) {
+            con.createQuery(insertSql)
+                    .bind(repositoryRecord)
+                    .executeUpdate();
+        }
+
+    }
+
+    static final String insertSql =
+            "";
 }

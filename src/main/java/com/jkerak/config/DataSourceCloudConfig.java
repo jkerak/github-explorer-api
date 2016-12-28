@@ -12,7 +12,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @Profile({"cloud"})
-public class DataSourceConfig extends AbstractCloudConfig {
+public class DataSourceCloudConfig extends AbstractCloudConfig {
 
     @Bean
     @Primary
@@ -25,5 +25,4 @@ public class DataSourceConfig extends AbstractCloudConfig {
     public Sql2o getSql2oForPcf(@Autowired DataSource dataSource){
         return new Sql2o(dataSource);
     }
-
 }

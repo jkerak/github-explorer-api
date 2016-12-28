@@ -1,7 +1,7 @@
 package com.jkerak.config;
 
-import com.jkerak.api.RepositoriesApiImpl;
-import com.jkerak.api.RepositorySearchApiImpl;
+
+import com.jkerak.api.UserCollectionsApiImpl;
 import io.swagger.jaxrs.config.BeanConfig;
 import io.swagger.jaxrs.listing.ApiListingResource;
 import io.swagger.jaxrs.listing.SwaggerSerializers;
@@ -17,8 +17,7 @@ import javax.ws.rs.ApplicationPath;
 public class JerseyConfig extends ResourceConfig {
 
     public JerseyConfig() {
-        register(RepositoriesApiImpl.class);
-        register(RepositorySearchApiImpl.class);
+        register(UserCollectionsApiImpl.class);
     }
 
     @PostConstruct

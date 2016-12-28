@@ -3,7 +3,9 @@ CREATE TABLE UserCollectionRepository
   UserCollectionID BIGINT,
   RepositoryID BIGINT,
   Notes VARCHAR(250),
+  RepositoryName VARCHAR(100),
+  `timestamp` TIMESTAMP,
+  Status CHAR(1) NOT NULL,
   PRIMARY KEY (UserCollectionRepositoryID),
-  FOREIGN KEY (UserCollectionID) REFERENCES UserCollection(UserCollectionID),
-  FOREIGN KEY (RepositoryID) REFERENCES Repository(RepositoryID)
+  FOREIGN KEY (UserCollectionID) REFERENCES UserCollection(UserCollectionID)
 )

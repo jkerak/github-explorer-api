@@ -1,24 +1,29 @@
 package com.jkerak.api;
 
-import io.swagger.annotations.ApiParam;
-
+import com.jkerak.model.UserCollection;
+import com.jkerak.service.UserCollectionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import javax.ws.rs.core.Response;
 
 public class UserCollectionsApiImpl implements UserCollectionsApi {
 
+    @Autowired
+    private UserCollectionService userCollectionService;
 
-    @Override
-    public Response addRepositoryToUserCollection(@ApiParam(value = "userRepositoryCollectionId to add dao", required = true) Long id) throws NotFoundException {
+    public Response createUserCollection(String title) throws NotFoundException {
         return null;
     }
 
-    @Override
-    public Response ignoreRepository(@ApiParam(value = "userRepositoryCollectionId to add dao", required = true) Long id) throws NotFoundException {
+    public Response ignoreRepository(Long id, Long repositoryId) throws NotFoundException {
         return null;
     }
 
-    @Override
-    public Response userCollectionsIdGet(@ApiParam(value = "id of collection to return", required = true) Long id) throws NotFoundException {
+    public Response saveRepository(Long id, Long repositoryId) throws NotFoundException {
         return null;
+    }
+
+    public Response userCollectionsIdGet(Long id) throws NotFoundException {
+        UserCollection userCollection = userCollectionService.getUserCollection(id);
+        return Response.ok().entity(userCollection).build();
     }
 }
