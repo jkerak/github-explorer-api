@@ -1,2 +1,2 @@
 # githubExplorerAPI
-REST API for Github Explorer project
+Spring Boot REST API for Github Explorer project
