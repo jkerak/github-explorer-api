@@ -42,11 +42,29 @@ public class UserCollectionDao {
     }
     static final String findByIdSql =
             "SELECT  UserCollectionID, \n" +
-            "GithubUserID, \n" +
-            "Title,\n " +
-            "timestamp,\n" +
-            "Status\n" +
-            "FROM usercollection\n" +
-            "WHERE UserCollectionID = :id";
+                    "GithubUserID, \n" +
+                    "Title,\n" +
+                    "minimumStars,\n" +
+                    "minimumSize,\n" +
+                    "language,\n" +
+                    "timestamp,\n" +
+                    "Status\n" +
+                    "FROM usercollection\n" +
+                    "WHERE UserCollectionID = :id";
 
+    public void update(UserCollectionRecord userCollection) {
+        try (Connection con = sql2o.open()) {
+            con.createQuery(updateSql)
+                    .bind(userCollection)
+                    .executeUpdate();
+        }
+    }
+    static final String updateSql =
+            "UPDATE UserCollection \n" +
+            "SET Title = :title,\n" +
+            "   GithubUserID = :githubUserId,\n" +
+            "  minimumSize = :minimumSize,\n" +
+            "  minimumStars = :minimumStars,\n" +
+            "  language = :language\n" +
+            "WHERE UserCollectionID = :userCollectionId";
 }

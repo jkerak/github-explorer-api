@@ -7,6 +7,9 @@ public class UserCollectionRecord {
     private Long userCollectionId;
     private Long githubUserId;
     private String title;
+    private String minimumStars;
+    private String minimumSize;
+    private String language;
     private java.sql.Timestamp timestamp;
     private String status;
 
@@ -32,6 +35,30 @@ public class UserCollectionRecord {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getMinimumStars() {
+        return minimumStars;
+    }
+
+    public void setMinimumStars(String minimumStars) {
+        this.minimumStars = minimumStars;
+    }
+
+    public String getMinimumSize() {
+        return minimumSize;
+    }
+
+    public void setMinimumSize(String minimumSize) {
+        this.minimumSize = minimumSize;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
     public Timestamp getTimestamp() {

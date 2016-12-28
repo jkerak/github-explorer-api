@@ -4,6 +4,7 @@ import com.jkerak.dao.UserCollectionDao;
 import com.jkerak.dao.UserCollectionRepositoryDao;
 import com.jkerak.dbrecord.UserCollectionRecord;
 import com.jkerak.dbrecord.UserCollectionRepositoryRecord;
+import com.jkerak.dto.UserCollectionDto;
 import com.jkerak.model.UserCollection;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,30 @@ public class UserCollectionService {
 
         collection.setSavedRepos(savedRepos);
         collection.setIgnoredRepos(ignoredRepos);
+        collection.setModified(collectionRecord.getTimestamp().toLocalDateTime().toString());
 
         return collection;
+    }
+
+    public void updateUserCollection(Long id, UserCollectionDto userCollectionDto) {
+
+        UserCollectionRecord userCollection = userCollectionDao.findById(id);
+
+        if(userCollectionDto.getLanguage() != null) {
+            userCollection.setLanguage(userCollectionDto.getLanguage());
+        }
+        if(userCollectionDto.getMinimumSize() != null) {
+            userCollection.setMinimumSize(String.valueOf(userCollectionDto.getMinimumSize()));
+        }
+        if(userCollectionDto.getMinimumStars() != null) {
+            userCollection.setMinimumStars(String.valueOf(userCollectionDto.getMinimumSize()));
+        }
+        if(userCollectionDto.getTitle() != null) {
+            userCollection.setTitle(String.valueOf(userCollectionDto.getTitle()));
+        }
+
+        userCollectionDao.update(userCollection);
+
+
     }
 }

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserCollection {
-    private Long id = null;
+    private Long userCollectionId = null;
     private String title = null;
     private String created = null;
     private String modified = null;
@@ -14,12 +14,12 @@ public class UserCollection {
     private Integer minimumSize = null;
     private String language = null;
 
-    public Long getId() {
-        return id;
+    public Long getUserCollectionId() {
+        return userCollectionId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserCollectionId(Long userCollectionId) {
+        this.userCollectionId = userCollectionId;
     }
 
     public String getTitle() {
