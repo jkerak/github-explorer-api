@@ -2,5 +2,5 @@
 # githubExplorerAPI
 Spring Boot REST API for Github Explorer project
 
-REST Endpoints are defined [swagger.yaml](src/main/resources/swagger.yaml) and JAX-RS Interfaces with Swagger annotations are code-generated under `target/generated-soures/swagger-codegen`. 
+REST Endpoints are defined [swagger.yaml](src/main/resources/swagger.yaml) and JAX-RS Interfaces with Swagger annotations are code-generated during every build (`mvn clean install`) under `target/generated-soures/swagger-codegen`. 
 
