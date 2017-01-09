@@ -1,4 +1,4 @@
-package com.jkerak.dao;
+package com.jkerak.repository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

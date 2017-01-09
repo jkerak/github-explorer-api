@@ -1,4 +1,4 @@
-package com.jkerak.dao;
+package com.jkerak.repository;
 
 import com.jkerak.dbrecord.UserCollectionRecord;
 import org.springframework.beans.factory.annotation.Autowired;

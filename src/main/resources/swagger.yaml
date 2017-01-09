@@ -64,26 +64,6 @@ paths:
         200:
           description: OK
 
-  /userCollections/{id}/save:
-    post:
-      description: |
-        Add repository to collection
-      operationId: saveRepository
-      parameters:
-        - name: id
-          in: path
-          description: UserCollectionID
-          required: true
-          type: integer
-          format: int64
-        - name: repositoryId
-          in: query
-          required: true
-          type: integer
-          format: int64
-      responses:
-        200:
-          description: OK
 
   /userCollections:
     post:

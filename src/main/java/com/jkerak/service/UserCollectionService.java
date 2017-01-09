@@ -1,7 +1,7 @@
 package com.jkerak.service;
 
-import com.jkerak.dao.UserCollectionDao;
-import com.jkerak.dao.UserCollectionRepositoryDao;
+import com.jkerak.repository.UserCollectionDao;
+import com.jkerak.repository.UserCollectionRepositoryDao;
 import com.jkerak.dbrecord.UserCollectionRecord;
 import com.jkerak.dbrecord.UserCollectionRepositoryRecord;
 import com.jkerak.dto.UserCollectionDto;
@@ -9,15 +9,6 @@ import com.jkerak.model.UserCollection;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriComponents;
-import org.springframework.web.util.UriComponentsBuilder;
-
-import java.io.IOException;
-import java.net.URI;
-import java.net.URLEncoder;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,15 +31,6 @@ public class UserCollectionService {
         repositoryRecord.setStatus("I");
         userCollectionRepositoryDao.insert(repositoryRecord);
     }
-
-    public void saveRepository(Long repositoryId, Long collectionId){
-        UserCollectionRepositoryRecord repositoryRecord = new UserCollectionRepositoryRecord();
-        repositoryRecord.setUserCollectionId(collectionId);
-        repositoryRecord.setRepositoryId(repositoryId);
-        repositoryRecord.setStatus("S");
-        userCollectionRepositoryDao.insert(repositoryRecord);
-    }
-
 
     public UserCollection getUserCollection(Long id) {
         List<UserCollectionRepositoryRecord> savedOrIgnoredRepos
